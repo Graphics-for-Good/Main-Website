@@ -7,9 +7,10 @@
 }
 
 .frame {
-    max-width: 750px;
+    max-height: 100%;
+    width: auto;
     aspect-ratio: 16 / 9;
-    height: auto;
+
+    border: solid 1px white;
     border-radius: 5rem;
-    border: solid 1px darkgray;
 }
