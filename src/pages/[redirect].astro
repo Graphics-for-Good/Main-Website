@@ -34,7 +34,7 @@ if (redirect.length > 0) redirect = redirect[0]
 else redirect = def
 
 if (!redirect.mode) redirect.mode = 'page'
-if (redirect !== 'frame') Astro.redirect(redirect.dest)
+if (redirect !== 'frame') return Astro.redirect(redirect.dest)
 
 function getTitle(link) {
     if (link.startsWith('/')) link = link.slice(1)
