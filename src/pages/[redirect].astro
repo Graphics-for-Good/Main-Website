@@ -22,7 +22,7 @@ export function getStaticPaths() {
     ];
 }
 
-const { redirect } = Astro.params;
+var { redirect } = Astro.params;
 if (!redirect) redirect = 'not-correct'
 redirect = redirects.filter(r => r.slug.endsWith(redirect))
 
