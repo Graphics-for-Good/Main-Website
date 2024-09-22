@@ -38,7 +38,7 @@ function getLink(link) {
     hasHome = true
   }
   else if (fileName.startsWith('_')) return ''
-  else if (fileName.startsWith('[') && fileName.wndsWith(']')) return ''
+  else if (fileName.startsWith('[') && fileName.endsWith(']')) return ''
   else if (parseInt(fileName)) return ''
 
   var rep = reps.filter(r => r.key === fileName)
