@@ -1,11 +1,15 @@
 .frame-page {
     box-sizing: border-box;
-    margin-inline: auto;
     padding: 2rem;
+
+    display: grid;
+    place-items: center;
 }
 
 .frame {
     max-width: 750px;
+    aspect-ratio: 16 / 9;
+    height: auto;
     border-radius: 5rem;
     border: solid 1px darkgray;
 }
