@@ -34,6 +34,7 @@ files.forEach((file, i) => {
 
 export default defineConfig({
     site: siteUrl,
+    base: '/',
     trailingSlash: "ignore",
     integrations: [sitemap({
         // customPages: [].concat(memberUrls),
