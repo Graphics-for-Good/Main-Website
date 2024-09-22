@@ -41,6 +41,7 @@ function getLink(link) {
   else if (fileName.startsWith('[') && fileName.wndsWith(']')) return ''
   else if (parseInt(fileName)) return ''
 
+  console.log(reps)
   var rep = reps.filter(r => r.key === fileName)
   if (rep.length > 0) fileName = rep[0].value
 
