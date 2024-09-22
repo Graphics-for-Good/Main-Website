@@ -1,4 +1,7 @@
 ---
+
+import Layout from '../layouts/Layout.astro'
+
 var def = {
     slug: '/not-correct', 
     dest: '/', 
@@ -30,7 +33,8 @@ redirect = redirects.filter(r => r.slug.endsWith(redirect))
 if (redirect.length > 0) redirect = redirect[0]
 else redirect = def
 
-console.log(redirect)
+if (!redirect.mode) redirect.mode = 'page'
+if (redirect !== 'frame') Astro.redirect(redirect.dest)
 
 ---
 {JSON.stringify(redirect)}
