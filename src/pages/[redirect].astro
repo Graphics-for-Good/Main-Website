@@ -37,18 +37,18 @@ if (!redirect.mode) redirect.mode = 'page'
 if (redirect !== 'frame') Astro.redirect(redirect.dest)
 
 function getTitle(link) {
-  var fileName = link
-  if (fileName.startsWith('/')) fileName = fileName.slice(1)
+    if (link.startsWith('/')) link = link.slice(1)
+    console.log(link)
 
-  var nameParts = []
-  if (fileName.includes('-')) nameParts = fileName.split('-')
-  else nameParts = [fileName]
+    var nameParts = []
+    if (link.includes('-')) nameParts = link.split('-')
+    else nameParts = [link]
 
-  nameParts.map(p => {
-    p = `${p.slice(0, 1).toUpperCase()}${p.slice(1)}`
-  })
+    nameParts.map(p => {
+        p = `${p.slice(0, 1).toUpperCase()}${p.slice(1)}`
+    })
 
-  return nameParts.join(' ')
+    return nameParts.join(' ')
 }
 
 var title = getTitle(redirect.slug)
