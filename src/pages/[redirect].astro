@@ -1,8 +1,14 @@
 ---
+var default = {
+    slug: '/not-correct', 
+    dest: '/', 
+}
+
 var redirects = [
     {
         slug: '/sign-up', 
         dest: 'https://go.graphics-for-good.com/Sign-Up', 
+        mode: 'frame', 
     }, 
     {
         slug: '/status', 
@@ -18,8 +24,12 @@ export function getStaticPaths() {
 
 const { redirect } = Astro.params;
 if (!redirect) redirect = 'not-correct'
+redirect = redirects.filter(r => r.slug.endsWith(redirect))
+
+if (redirect.length > 0) redirect = redirect[0]
+else redirect = default
 
 console.log(redirect)
 
 ---
-hello
+{JSON.stringify(redirect)}
