@@ -6,6 +6,9 @@ var domain = Astro.url.origin
 if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length-1)
 
+var reps = await Astro.glob('../../mconfig/pages/custom.js')
+var reps = reps.find(data => data)
+
 var pages = await Astro.glob('../pages/*.astro')
 
 var links = []
@@ -37,6 +40,9 @@ function getLink(link) {
   else if (fileName.startsWith('_')) return ''
   else if (fileName.startsWith('[') && fileName.wndsWith(']')) return ''
   else if (parseInt(fileName)) return ''
+
+  var rep = reps.filter(r => r.key === fileName)
+  if (rep.length > 0) fileName = rep[0].value
 
   var nameParts = []
   if (fileName.includes('-')) nameParts = fileName.split('-')
