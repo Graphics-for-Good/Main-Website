@@ -1,0 +1,25 @@
+---
+var redirects = [
+    {
+        slug: '/sign-up', 
+        dest: 'https://go.graphics-for-good.com/Sign-Up', 
+    }, 
+    {
+        slug: '/status', 
+        dest: 'https://go.graphics-for-good.com/Status', 
+    }
+]
+
+export function getStaticPaths() {
+    return [
+        {params: {redirects: 'status'}}, 
+    ];
+}
+
+const { redirects } = Astro.params;
+if (!redirects) redirects = 'not-correct'
+
+console.log(redirect)
+
+---
+hello
