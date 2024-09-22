@@ -11,12 +11,14 @@ var newSiteUpdatedDate = (new Date(siteUpdatedDate))
 var finalDate = newSiteUpdatedDate.toString().slice(0, 15)
 var finalDateS = finalDate.split(' ')
 
-finalDateS[0] = `${finalDateS[0]}day`
 finalDateS[0] = finalDateS[0]
-  .replace('Tueday', 'Tuesday')
-  .replace('Wedday', 'Wednesday')
-  .replace('Thuday', 'Thursday')
-  .replace('Satday', 'Saturday')
+  .replace('Sun', 'Sunday')
+  .replace('Mon', 'Monday')
+  .replace('Tue', 'Tuesday')
+  .replace('Wed', 'Wednesday')
+  .replace('Thu', 'Thursday')
+  .replace('Fri', 'Friday')
+  .replace('Sat', 'Saturday')
 
 finalDateS[1] = finalDateS[1]
   .replace('Jan', 'January')
