@@ -7,7 +7,7 @@ if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length-1)
 
 var reps = await Astro.glob('../../config/pages/custom.js')
-var reps = reps.find(data => data)
+var reps = reps.find(data => data).default
 
 var pages = await Astro.glob('../pages/*.astro')
 
