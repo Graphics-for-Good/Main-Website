@@ -40,7 +40,7 @@
 }
   
 
-main:not(.profile, .portal) > * {
+main:not(.profile, .portal, .frame-page) > * {
     &:not(.hero, :has( > section)) {
         @include scaleAnimations(both);
         @include animations;
