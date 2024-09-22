@@ -52,18 +52,25 @@ function getTitle(link) {
 var title = getTitle(redirect.slug)
 
 ---
-{
-    redirect.mode !== 'frame' ? <script dest={redirect.dest}>var dest = document.currentScript.getAttribute('dest'); if (!dest) dest = '/'; location.replace(dest)</script> : 
-    <Layout title={title}>
-        <main id="content" class="frame-page">
-            <iframe frameborder="0" src={redirect.dest} class="frame">
-                Please click <a href={redirect.dest}>Here</a> to view the page!
-                <script is:inline dest={redirect.dest}>
-                    var dest = document.currentScript.getAttribute('dest')
-                    if (!dest) dest = '/'
-                    location.replace(dest)
-                </script>
-            </frame>
-        </main>
-    </Layout>
-}
+<Layout title={title}>
+    <main id="content" class="frame-page">
+        <iframe frameborder="0" src={redirect.dest} class="frame">
+            Please click <a href={redirect.dest}>Here</a> to view the page!
+            <script is:inline dest={redirect.dest}>
+                var dest = document.currentScript.getAttribute('dest')
+                if (!dest) dest = '/'
+                location.replace(dest)
+            </script>
+        </frame>
+    </main>
+    <script mode={redirect.mode} dest={redirect.dest}>
+        var mode = document.currentScript.getAttribute('dest')
+        if (!mode) mode = 'page'
+
+        if (mode !== 'iframe') {
+            var dest = document.currentScript.getAttribute('dest')
+            if (!dest) dest = '/'
+            location.replace(dest)
+        }
+    </script>
+</Layout>
