@@ -1,5 +1,5 @@
 ---
-var default = {
+var def = {
     slug: '/not-correct', 
     dest: '/', 
 }
@@ -27,7 +27,7 @@ if (!redirect) redirect = 'not-correct'
 redirect = redirects.filter(r => r.slug.endsWith(redirect))
 
 if (redirect.length > 0) redirect = redirect[0]
-else redirect = default
+else redirect = def
 
 console.log(redirect)
 
