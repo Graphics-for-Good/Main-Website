@@ -34,7 +34,6 @@ if (redirect.length > 0) redirect = redirect[0]
 else redirect = def
 
 if (!redirect.mode) redirect.mode = 'page'
-if (redirect.mode !== 'frame') return Astro.redirect(redirect.dest)
 
 function getTitle(link) {
     if (link.startsWith('/')) link = link.slice(1)
@@ -53,15 +52,21 @@ function getTitle(link) {
 var title = getTitle(redirect.slug)
 
 ---
-<Layout title={title}>
-    <main id="content" class="frame-page">
-        <iframe frameborder="0" src={redirect.dest} class="frame">
-            Please click <a href={redirect.dest}>Here</a> to view the page!
-            <script is:inline dest={redirect.dest}>
-                var dest = document.currentScript.getAttribute('dest')
-                if (!dest) dest = '/'
-                location.replace(dest)
-            </script>
-        </frame>
-    </main>
-</Layout>
+{
+    redirect.mode !== 'frame' ? (
+        <script dest={redirect.dest}>var dest = document.currentScript.getAttribute('dest'); if (!dest) dest = '/'; location.replace(dest)</script>
+    ) : (
+        <Layout title={title}>
+            <main id="content" class="frame-page">
+                <iframe frameborder="0" src={redirect.dest} class="frame">
+                    Please click <a href={redirect.dest}>Here</a> to view the page!
+                    <script is:inline dest={redirect.dest}>
+                        var dest = document.currentScript.getAttribute('dest')
+                        if (!dest) dest = '/'
+                        location.replace(dest)
+                    </script>
+                </frame>
+            </main>
+        </Layout>
+    )
+}
