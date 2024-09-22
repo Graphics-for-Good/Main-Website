@@ -6,7 +6,7 @@ var domain = Astro.url.origin
 if (path.startsWith('/') && path !== '/') path = path.slice(1)
 if (path.endsWith('/') && path !== '/') path = path.slice(0, path.length-1)
 
-var reps = await Astro.glob('../../mconfig/pages/custom.js')
+var reps = await Astro.glob('../../config/pages/custom.js')
 var reps = reps.find(data => data)
 
 var pages = await Astro.glob('../pages/*.astro')
