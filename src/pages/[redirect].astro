@@ -38,14 +38,13 @@ if (redirect !== 'frame') Astro.redirect(redirect.dest)
 
 function getTitle(link) {
     if (link.startsWith('/')) link = link.slice(1)
-    console.log(link)
-
+    
     var nameParts = []
     if (link.includes('-')) nameParts = link.split('-')
     else nameParts = [link]
 
-    nameParts.map(p => {
-        p = `${p.slice(0, 1).toUpperCase()}${p.slice(1)}`
+    nameParts.forEach((p, i) => {
+        nameParts[i] = `${p.slice(0, 1).toUpperCase()}${p.slice(1)}`
     })
 
     return nameParts.join(' ')
