@@ -63,7 +63,7 @@ var title = getTitle(redirect.slug)
             </script>
         </frame>
     </main>
-    <script is:inline mode={redirect.mode} dest={redirect.dest}>
+    <script class="stay-put" is:inline mode={redirect.mode} dest={redirect.dest}>
         var mode = document.currentScript.getAttribute('dest')
         if (!mode) mode = 'page'
 
