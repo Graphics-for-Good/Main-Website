@@ -12,12 +12,12 @@ var redirects = [
 
 export function getStaticPaths() {
     return [
-        {params: {redirects: 'status'}}, 
+        {params: {redirect: 'status'}}, 
     ];
 }
 
-const { redirects } = Astro.params;
-if (!redirects) redirects = 'not-correct'
+const { redirect } = Astro.params;
+if (!redirect) redirect = 'not-correct'
 
 console.log(redirect)
 
