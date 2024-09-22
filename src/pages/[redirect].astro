@@ -36,5 +36,33 @@ else redirect = def
 if (!redirect.mode) redirect.mode = 'page'
 if (redirect !== 'frame') Astro.redirect(redirect.dest)
 
+function getTitle(link) {
+  var fileName = link
+  if (fileName.startsWith('/')) fileName = fileName.slice(1)
+
+  var nameParts = []
+  if (fileName.includes('-')) nameParts = fileName.split('-')
+  else nameParts = [fileName]
+
+  nameParts.map(p => {
+    p = `${p.slice(0, 1).toUpperCase()}${p.slice(1)}`
+  })
+
+  return nameParts.join(' ')
+}
+
+var title = getTitle(redirect.slug)
+
 ---
-{JSON.stringify(redirect)}
+<Layout title={title}>
+    <main id="content" class="frame-page">
+        <iframe frameborder="0" src={redirect.dest} class="frame">
+            Please click <a href={redirect.dest}>Here</a> to view the page!
+            <script is:inline dest={redirect.dest}>
+                var dest = document.currentScript.getAttribute('dest')
+                if (!dest) dest = '/'
+                location.replace(dest)
+            </script>
+        </frame>
+    </main>
+</Layout>
