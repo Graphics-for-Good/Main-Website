@@ -58,6 +58,9 @@ html {
 .fullHeight:not(body > *.fullHeight, .hero.fullHeight) {
   height: 100% !important;
 }
+body.fullHeight {
+  display: flex;
+}
 
 body {
   display: flex;
